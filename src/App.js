@@ -1,24 +1,33 @@
-import logo from './logo.svg';
 import './App.css';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import RootLayout from './pages/RootLayout'
+import LandingPage from './pages/LandingPage'
+import SkillsPage from './pages/SkillsPage'
+import ProjectsPage from './pages/ProjectsPage'
+import ExperiencesPage from './pages/ExperiencesPage'
+import ResumePage from './pages/ResumePage'
+import { ViewportProvider } from './context/ViewportProvider'
+
+
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <RootLayout />,
+    children: [
+      { index: true, element: <LandingPage /> }, 
+      { path: 'skills', element: <SkillsPage />},
+      { path: 'projects', element: <ProjectsPage />},
+      { path: 'experiences', element: <ExperiencesPage />},
+      { path: 'resume', element: <ResumePage />},
+    ]
+  },
+])
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ViewportProvider>
+      <RouterProvider router={router} />   // router prop is mandatory
+    </ViewportProvider>
   );
 }
 
