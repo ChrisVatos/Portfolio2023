@@ -14,7 +14,7 @@ import CenterFocusStrongIcon from '@mui/icons-material/CenterFocusStrong';
 import CodeIcon from '@mui/icons-material/Code';
 
 const MainNav = styled.nav`
-    border: 1px solid grey;
+    border-bottom: 1px solid #7E7C7D;
     align-items: center;
     display: flex;
     justify-content: space-between;
